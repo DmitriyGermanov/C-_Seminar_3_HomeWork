@@ -2,8 +2,8 @@
 {
     internal class Task_03
     {
-        private int[,] labirynth1 = new int[,]
-        {
+        private int[,] labirynth1 { get; set; } =
+       {
             {1, 1, 1, 1, 1, 1, 1 },
             {1, 0, 0, 0, 0, 0, 2 },
             {1, 0, 1, 1, 1, 0, 1 },
@@ -12,8 +12,25 @@
             {1, 1, 1, 1, 1, 1, 1 },
             {1, 1, 1, 1, 1, 1, 1 }
         };
+        public int[,] Labirynth
+        {
+            get
+            {
+                return labirynth1;
+            }
+            set
+            {
+                labirynth1 = value;
+            }
+        }
 
-        public List<Tuple<int, int>> FindExit(int Row, int Column)
+        public int HasExit(int startI, int startJ, int[,] l)
+        {
+            var exits = new Task_03().FindExit(startI, startJ, l);
+            return exits.Count;
+        }
+
+        public List<Tuple<int, int>> FindExit(int Row, int Column, int[,] labirynth1)
         {
             Stack<Tuple<int, int>> stack = new Stack<Tuple<int, int>>();
             List<Tuple<int, int>> exits = new List<Tuple<int, int>>();
